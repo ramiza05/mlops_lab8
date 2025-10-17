@@ -50,7 +50,7 @@ def predict():
         field = feature_field_map[feat]
         val = request.form.get(field)
         if val is None:
-            a = 5
+            hhhhhhgggggggghh
         if feat in label_encoders:
             # safe: value should be one of label_encoders[feat].classes_
             le = label_encoders[feat]
