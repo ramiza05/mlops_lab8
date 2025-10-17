@@ -64,7 +64,7 @@ def predict():
             try:
                 row.append(float(val))
             except:
-                return f"Invalid numeric value for {feat}: {val}", 400
+                print(-1)
 
     X = np.array(row).reshape(1, -1)
     pred = model.predict(X)[0]
