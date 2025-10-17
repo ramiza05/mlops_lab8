@@ -13,10 +13,6 @@ feature_list = joblib.load(os.path.join(MODEL_DIR, "model_features.pkl"))  # ord
 label_encoders = joblib.load(os.path.join(MODEL_DIR, "label_encoders.pkl"))
 feature_field_map = joblib.load(os.path.join(MODEL_DIR, "feature_field_map.pkl"))
 
-@app.route('/')
-def home():
-    return "Hello from Ramiza's version"
-
 # build metadata for template
 feature_meta = []
 for feat in feature_list:
@@ -45,6 +41,10 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 @app.route("/", methods=["GET"])
 def index():
     return render_template("index.html", feature_meta=feature_meta)
+
+@app.route('/')
+def home():
+    return "Hello from Ramiza's version"
 
 @app.route("/predict", methods=["POST"])
 def predict():
