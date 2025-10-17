@@ -13,6 +13,10 @@ feature_list = joblib.load(os.path.join(MODEL_DIR, "model_features.pkl"))  # ord
 label_encoders = joblib.load(os.path.join(MODEL_DIR, "label_encoders.pkl"))
 feature_field_map = joblib.load(os.path.join(MODEL_DIR, "feature_field_map.pkl"))
 
+@app.route('/')
+def home():
+    return "Hello from Ramiza's version"
+
 # build metadata for template
 feature_meta = []
 for feat in feature_list:
@@ -64,7 +68,7 @@ def predict():
             try:
                 row.append(float(val))
             except:
-                print(-1)
+                return f"Invalid numeric value for {feat}: {val}", 400
 
     X = np.array(row).reshape(1, -1)
     pred = model.predict(X)[0]
