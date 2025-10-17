@@ -42,6 +42,10 @@ app.config['TEMPLATES_AUTO_RELOAD'] = True
 def index():
     return render_template("index.html", feature_meta=feature_meta)
 
+@app.route('/')
+def home():
+    return "Hello from Noor's version"
+
 @app.route("/predict", methods=["POST"])
 def predict():
     # build input vector in same order as feature_list
@@ -50,7 +54,7 @@ def predict():
         field = feature_field_map[feat]
         val = request.form.get(field)
         if val is None:
-            return f"Missing value for {feat}", 400
+            print('hello')
         if feat in label_encoders:
             # safe: value should be one of label_encoders[feat].classes_
             le = label_encoders[feat]
