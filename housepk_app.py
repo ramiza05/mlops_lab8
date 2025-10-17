@@ -51,7 +51,8 @@ def predict():
         val = request.form.get(field)
         if val is None:
             #return f"Missing value for {feat}", 400
-            return -2
+            print("edited")
+            return 0
         if feat in label_encoders:
             # safe: value should be one of label_encoders[feat].classes_
             le = label_encoders[feat]
